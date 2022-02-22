@@ -1,0 +1,26 @@
+h1 {
+	background: linear-gradient(to right, transparent, #d0d0d5, transparent);
+	text-align: center;
+}
+h3 {
+	text-align: center;
+}
+p {
+    font-size: 18px;
+    margin-left: 20%;
+	font-family: Arial;
+}
+input {
+	float: right;
+	margin-right: 20%;
+}
+button {
+	width: 10%;
+	font-size: 20px;
+	border-radius: 15px;
+}
+.btnPost {
+	display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
