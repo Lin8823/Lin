@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="{{ url_for('static',    filename='css/style.css') }}" rel="stylesheet">
+    <title>Final</title>
+</head>
+<body>
+    <div class="header">
+        <h1>內政部不動產時價登錄網資料查詢</h1>
+    </div>
+    <p>鄉鎮市區：
+        <select id="district" name="district" type="string" data-actions-box="true"  
+        data-live-search="true" value="中正區">
+        </select>
+    </p>
+    <p>樓層總數：
+        <input id="floor" name="floor" type="number" />
+    </p>
+    <p>建物型態：
+        <select id="state" name="state" type="string" value="套房" >
+            <option id="a" name="a" type="string">套房</option>
+            <option id="b" name="b" type="string">住宅大樓</option>
+            <option id="c" name="c" type="string">公寓</option>
+            <option id="d" name="d" type="string">廠辦</option>
+            <option id="e" name="e" type="string">華廈</option>
+            <option id="f" name="f" type="string">工廠</option>
+            <option id="g" name="g" type="string">辦公商業大樓</option>
+            <option id="h" name="h" type="string">農舍</option>
+            <option id="i" name="i" type="string">透天厝</option>
+            <option id="j" name="j" type="string">店面</option>
+            <option id="k" name="k" type="string">倉庫</option>
+            <option id="l" name="l" type="string">其他</option>
+        </select>
+    </p>
+    
+    <div class="btnPost">
+        <button id="btnPost" onclick="Post()">Search</button>
+    </div>
+    <br>
+    <hr>
+    <h3>Result
+        <div id="console"></div>
+    </h3>
+    
+    
+    <script>
+        function Post() {
+            console.log('*** Test Post ***');
+            var $btnGet = $('#btnGet');
+            var $console = $('#console');
+            var $btnPost = $('#btnPost');
+            var $district = $('#district').val();
+            var $floor = $('#floor').val();
+            var $state = $('#state').val();
+            var data = {'district':$district, 'floor':$floor, 'state':$state}
+
+            
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost:5000/process',
+                data : data,
+                success: function (data) {
+                                console.log("checkpoint");
+                                $console.append(data);
+                                // document.getElementById("console").innerHTML=data;
+
+                    
+                            },
+                error: function (xhr) {
+                                alert('Ajax request 發生錯誤');
+            }});
+	}
+      
+    </script>
+
+    <script>
+        var district = ['燕巢區', '梓官區', '林口區', '田寮區', '三峽區', '淡水區', '瑞芳區', '彌陀區', '杉林區', '路竹區', '茂林區', '大社區', '桃源區', '雙溪區', '板橋區', '大寮區', '苓雅區', '新莊區', '前鎮區', '萬里區', '三重區', '土城區', '小港區', '鳳山區', '永安區', '岡山區', '蘆洲區', '樹林區', '林園區', '甲仙區', '仁武區', '鼓山區', '橋頭區', '五股區', '深坑區', '內門區', '貢寮區', '汐止區', '茄萣區', '鹽埕區', '美濃區', '楠梓區', '新興區', '金山區', '石碇區', '鳥松區', '八里區', '旗津區', '六龜區', '新店區', '三民區', '左營區', '那瑪夏區', '石門區', '平溪區', '泰山區', '大樹區', '前金區', '中和區', '鶯歌區', '三芝區', '湖內區', '坪林區', '阿蓮區', '烏來區', '旗山區', '永和區', '南港區', '中區', '北投區', '大肚區', '八德區', '豐原區', '內湖區', '潭子區', '和平區', '東勢區', '萬華區', '新社區', '后里區', '龍潭區', '外埔區', '清水區', '龍井區', '太平區', '文山區', '大園區', '沙鹿區', '復興區', '烏日區', '松山區', '楊梅區', '信義區', '大甲區', '觀音區', '大同區', '南屯區', '梧棲區', '石岡區', '大里區', '南區', '蘆竹區', '西屯區', '大溪區', '北區', '大雅區', '神岡區', '中正區', '北屯區', '霧峰區', '桃園區', '新屋區', '龜山區', '平鎮區', '中山區', '中壢區', '大安區', '東區', '西區', '士林區']
+        for(var i=0;i <district.length;i++){
+         		$("#district").append('<option>'+district[i]+'</option>');
+         };
+    </script>
+</body>
+</html>
