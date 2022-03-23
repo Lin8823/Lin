@@ -12,4 +12,5 @@
 * 【建物型態】為【住宅大樓】  
 * 【總樓層數】需【大於等於十三層】
 
-5.[land_data](https://github.com/Lin8823/Lin/tree/main/%E4%B8%80%E9%A8%B0%E8%B3%87%E8%A8%8A/land_data) --Flask API
+5.[land](https://github.com/Lin8823/Lin/tree/main/%E4%B8%80%E9%A8%B0%E8%B3%87%E8%A8%8A/land) --Flask API
+* 將land資料夾下載後，至終端機將工作路徑轉至land資料夾，並使用 ```falsk run``` 指令，啟動flask專案
